@@ -1,0 +1,118 @@
+/* ============================
+   CONTENEDOR GENERAL
+============================ */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* ============================
+   FORMULARIO
+============================ */
+
+.formulario {
+    width: 100%;
+    max-width: 450px;          /* Tamaño ideal */
+    margin: 30px auto;         /* <-- CENTRADO */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 30px 35px;
+    background: #f3c5ff;       /* Morado claro gamer */
+    border-radius: 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+/* =============================
+   INPUTS
+============================ */
+
+.formulario input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    outline: none;
+    border-radius: 10px;
+    border: 2px solid #c46bff;
+    transition: all .2s ease;
+}
+
+.formulario input:focus {
+    border-color: #8a14dd;
+    box-shadow: 0 0 8px #bf41ff8a;
+}
+
+/* =============================
+   BOTÓN
+============================ */
+
+.enviar {
+    padding: 12px;
+    background: #c155ff;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+.enviar:hover {
+    background: #a13adf;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+/* =============================
+   MENSAJE FINAL
+============================ */
+
+.main-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+
+/* ============================
+   MENSAJE FINAL DE COMPRA
+============================ */
+
+.container {
+    text-align: center;
+}
+
+/* Título */
+.main-title {
+    margin-top: 50px;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+/* Texto del número de pedido */
+.pedido-id {
+    font-size: 1.4rem;          /* Más grande */
+    font-weight: 600;           /* Más grueso */
+    margin-top: 20px;
+    background: #f3c5ff;        /* Morado suave gamer */
+    padding: 12px 18px;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.form-error {
+  color: #d32f2f;
+  font-size: 0.9rem;
+}
+
+.form-success {
+  color: #2e7d32;
+  font-size: 0.9rem;
+}
+

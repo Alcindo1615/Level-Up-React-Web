@@ -1,0 +1,168 @@
+/* src/styles/Nosotros.css */
+
+.nosotros {
+  background-color: #e884ff; /* tono lila claro similar al fondo principal */
+  min-height: calc(100vh - 200px); /* deja espacio para navbar y footer */
+  padding: 60px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.nosotros-hero {
+  text-align: center;
+  max-width: 900px;
+  margin-bottom: 40px;
+}
+
+.nosotros-titulo {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.nosotros-subtitulo {
+  font-size: 1.1rem;
+  color: #f5f5f5;
+}
+
+/* CONTENIDO PRINCIPAL */
+
+.nosotros-contenido {
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1.3fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.nosotros-bloque {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.nosotros-bloque h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  color: #00ff7f; /* verde gamer */
+}
+
+.nosotros-bloque p {
+  margin-bottom: 10px;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.nosotros-lista {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.nosotros-lista li {
+  position: relative;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  color: #333333;
+  line-height: 1.5;
+}
+
+.nosotros-lista li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.8rem;
+  color: #00ff7f;
+}
+
+/* TARJETAS (MISIÓN, VISIÓN, VALORES) */
+
+.nosotros-grid {
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.nosotros-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 22px 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nosotros-card h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #00ff7f;
+}
+
+.nosotros-card p {
+  margin: 0;
+  color: #333333;
+  line-height: 1.6;
+}
+
+/* SECCIÓN DETALLE PROYECTO */
+
+.nosotros-detalle {
+  max-width: 1100px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px 28px 30px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  margin-bottom: 20px;
+}
+
+.nosotros-detalle h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.6rem;
+  color: #00ff7f;
+}
+
+.nosotros-detalle p {
+  margin-bottom: 10px;
+  color: #333333;
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .nosotros-contenido {
+    grid-template-columns: 1fr;
+  }
+
+  .nosotros-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .nosotros {
+    padding: 40px 16px 60px;
+  }
+
+  .nosotros-titulo {
+    font-size: 2.2rem;
+  }
+
+  .nosotros-subtitulo {
+    font-size: 1rem;
+  }
+}

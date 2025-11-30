@@ -1,0 +1,233 @@
+/* ================= NAVBAR GENERAL ================= */
+
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 60px;
+    background: #c46bff;        /* tu color morado */
+    border-bottom: 3px solid black;
+}
+
+/* Logo */
+
+.navbar img {
+    margin-right: 12px;
+}
+
+.logo {
+    text-decoration: none;
+    color: #000;
+}
+
+.logo h1 {
+    font-size: 1.9rem;
+    transition: transform .25s ease;
+}
+
+.logo:hover h1 {
+    transform: scale(1.05);
+}
+
+/* ================= MENU ================= */
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Todos los items */
+.menu li {
+    list-style: none;
+}
+
+/* ================= SEPARAR IZQUIERDA / DERECHA ================= */
+
+/* El 5to elemento empuja a los demás a la derecha */
+.menu li:nth-child(5) {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+/* ================= LINKS ================= */
+
+.menu-link {
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    font-size: 1.05rem;
+    font-weight: 500;
+    transition: transform .25s ease, color .25s ease;
+}
+
+/* Línea neon animada */
+.menu-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #00f7ff;
+    transition: width .25s ease;
+}
+
+.menu-link:hover {
+    color: #30004f;
+    transform: translateY(-2px);
+}
+
+.menu-link:hover::after {
+    width: 100%;
+}
+
+/* ================= CARTWIDGET LINK (hereda estilo) ================= */
+
+.menu li:last-child a {
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    transition: transform .25s ease, color .25s ease;
+}
+
+.menu li:last-child a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #00eaff;
+    transition: width .25s ease;
+}
+
+.menu li:last-child a:hover {
+    transform: translateY(-2px);
+    color: #30004f;
+}
+
+.menu li:last-child a:hover::after {
+    width: 100%;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+    .navbar {
+        flex-direction: column;
+        padding: 20px 30px;
+    }
+
+    .menu {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .menu li:nth-child(5) {
+        margin-left: 0;
+    }
+}
+
+
+/* Barra principal más delgada */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+  background-color: #c965ff;
+  border-bottom: 2px solid #000;
+}
+
+/* Logo + título */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* El h1 no debe agregar altura extra */
+.navbar-left .logo h1,
+.logo h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* Zona central con el menú */
+.navbar-middle {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Lista de links */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Derecha: login/logout + carrito */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Botón cerrar sesión */
+.btn-logout {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ================== ESTILOS DEL WIDGET DEL CARRITO ================== */
+
+.cart-widget {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;               /* separa los elementos */
+    text-decoration: none;
+}
+
+/* Texto "Carrito" */
+.cart-text {
+    font-size: 1.1rem;       /* texto más grande */
+    font-family: 600;
+    color: #000;
+}
+
+/* Ícono del carrito */
+.cart-icon {
+    font-size: 28px;         /* ícono más grande */
+    color: #ffffff;
+    margin-top: 1px;         /* lo baja un poquito para centrarlo */
+}
+
+/* Número del carrito */
+.numerito {
+    background-color: #ff4ae8;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 50%;
+    font-size: 14px;          /* número más grande */
+    font-weight: 700;
+    line-height: 1;
+    min-width: 22px;          /* tamaño mínimo redondo */
+    text-align: center;
+}

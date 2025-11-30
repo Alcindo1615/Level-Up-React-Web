@@ -1,0 +1,94 @@
+/* === CONTENEDOR GENERAL === */
+.contacto-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #f3c8ff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+/* === TITULO Y SUBTITULO === */
+.contacto-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.contacto-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* === FORMULARIO === */
+.contacto-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Inputs, Selects y Textarea del mismo tamaño */
+.contacto-form input,
+.contacto-form select,
+.contacto-form textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border-radius: 8px;
+  border: 2px solid #d39ce0;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Textarea */
+.contacto-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Focus */
+.contacto-form input:focus,
+.contacto-form select:focus,
+.contacto-form textarea:focus {
+  outline: none;
+  border-color: #a84ccb;
+  box-shadow: 0 0 6px #bf5aff;
+}
+
+/* === BOTON === */
+.contacto-btn {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #b44cff;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contacto-btn:hover {
+  background-color: #8f3acc;
+}
+
+/* === MENSAJES === */
+.form-success {
+  padding: 10px;
+  background: #d3ffd8;
+  border: 1px solid #79d883;
+  color: #236b2d;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.form-error {
+  padding: 10px;
+  background: #ffd6d6;
+  border: 1px solid #ff8c8c;
+  color: #8b1d1d;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}

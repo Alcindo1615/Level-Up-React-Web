@@ -1,0 +1,104 @@
+/* ======== FOOTER GENERAL ======== */
+.footer {
+  background-color: #b455f1; /* Morado que combina */
+  color: white;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor de columnas */
+.footer-top {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40px;
+}
+
+/* Columnas */
+.footer-section {
+  flex: 1;
+  padding: 0 20px;
+  text-align: left;
+}
+
+/* Títulos */
+.footer-section h3 {
+  color: #00ff85; /* Verde gamer */
+  margin-bottom: 15px;
+}
+
+/* Texto y enlaces */
+.footer-section a,
+.footer-section p {
+  color: white;
+  font-size: 15px;
+  text-decoration: none;
+  display: block;
+  margin: 5px 0;
+}
+
+.footer-section a:hover {
+  color: #00ff85;
+}
+
+/* Logo */
+.footer-logo {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+.footer-subtitle {
+  margin-bottom: 15px;
+}
+
+/* Redes sociales */
+.footer-social {
+  display: flex;
+  gap: 15px;
+}
+
+.social-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #8a2be2; /* Morado más oscuro */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.social-circle:hover {
+  background: #00ff85;
+  color: black;
+}
+
+/* Línea separadora */
+.footer-line {
+  width: 90%;
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  margin: 20px 0;
+}
+
+/* Parte inferior */
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.footer-pay img {
+  width: 90px;
+  margin: 0 10px;
+}

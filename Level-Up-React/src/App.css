@@ -1,0 +1,131 @@
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px;
+}
+
+/* Variables CSS - Mantener consistencia con proyecto original */
+:root {
+  --colorVerde: #00ff00;
+  --colorVerdeOscuro: #00aa00;
+  --colorAzul: #00ffff;
+  --colorGrisOscuro: #1a1a1a;
+  --colorBlanco: #ffffff;
+  --colorNegro: #000000;
+  --font-encabezado: 'Orbitron', sans-serif;
+  --font-principal: 'Arial', sans-serif;
+  --font-secundaria: 'Arial', sans-serif;
+}
+
+/* Estilos globales */
+body {
+  font-family: var(--font-principal);
+  background-color: var(--colorNegro);
+  color: var(--colorBlanco);
+  line-height: 1.6;
+}
+
+/* Enlaces globales */
+a {
+  color: var(--colorAzul);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--colorVerde);
+}
+
+/* Botones globales */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Utilidades */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding-top: 60px;
+  }
+}
+
+/* Loading states */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid var(--colorVerde);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Estados de error */
+.error {
+  color: #ff4444;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Estados vacíos */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #888;
+}
+
+main {
+  padding-top: 90px;
+  margin-bottom: 10px;
+}
+

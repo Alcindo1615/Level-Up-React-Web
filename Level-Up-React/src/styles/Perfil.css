@@ -1,0 +1,240 @@
+/* Página general */
+.perfil-page {
+  max-width: 900px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+}
+
+/* Header con título y caja Usuario/a */
+.perfil-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 20px;
+}
+
+.perfil-header-text {
+  flex: 1;
+}
+
+.perfil-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 5px;
+  text-align: left;
+}
+
+.perfil-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Caja Usuario/a a la derecha */
+.perfil-userbox {
+  background-color: #f3c8ff;
+  border-radius: 16px;
+  padding: 12px 16px;
+  min-width: 260px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.perfil-userbox-label {
+  display: block;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7b3cb3;
+}
+
+.perfil-userbox-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Avatar redondo tipo icono de usuario */
+.perfil-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b44cff, #ff63cf);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.perfil-userbox-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.perfil-username {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.perfil-useremail {
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Tarjeta con los campos de perfil */
+.perfil-card {
+  background-color: #f3c8ff;
+  padding: 22px 24px;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.perfil-card-empty {
+  text-align: center;
+}
+
+.perfil-message {
+  margin-top: 8px;
+  color: #555;
+}
+
+/* Cada fila de dato */
+.perfil-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e2aef3;
+}
+
+.perfil-field:last-child {
+  border-bottom: none;
+}
+
+.perfil-label {
+  font-weight: 600;
+  color: #7b3cb3;
+}
+
+.perfil-value {
+  font-weight: 500;
+  color: #222;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .perfil-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .perfil-title {
+    text-align: center;
+  }
+
+  .perfil-userbox {
+    align-self: center;
+  }
+
+  .perfil-field {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+
+  .perfil-value {
+    word-break: break-word;
+  }
+}
+
+/* Mensajes de feedback */
+.perfil-success {
+  margin: 8px 0 12px;
+  text-align: center;
+  color: #2e8b57;
+  font-weight: 600;
+}
+
+.perfil-error {
+  margin: 8px 0 12px;
+  text-align: center;
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+/* Inputs de edición dentro de la tarjeta */
+.perfil-input {
+  width: 100%;
+  max-width: 260px;
+  padding: 6px 10px;
+  border-radius: 18px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  background-color: #fdf3ff;
+  box-shadow: 0 0 0 1px #e2aef3 inset;
+}
+
+/* Botones de acción */
+.perfil-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.perfil-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.1s ease;
+}
+
+.perfil-btn-primary {
+  background-color: #b44cff;
+  color: #fff;
+}
+
+.perfil-btn-secondary {
+  background-color: #ffffff;
+  color: #b44cff;
+  border: 1px solid #b44cff;
+}
+
+.perfil-btn-danger {
+  background-color: #ff4d6a;
+  color: #fff;
+}
+
+.perfil-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+  opacity: 0.95;
+}
+
+.perfil-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+  opacity: 1;
+}
+
+/* Responsive para botones en móvil */
+@media (max-width: 768px) {
+  .perfil-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .perfil-actions .perfil-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
