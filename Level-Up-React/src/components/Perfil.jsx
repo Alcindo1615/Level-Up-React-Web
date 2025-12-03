@@ -1,12 +1,19 @@
 // src/components/Perfil.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Perfil.css";
-import { actualizarUsuario, eliminarUsuario } from "../api/usuarioService";
+import {
+  actualizarUsuario,
+  eliminarUsuario,
+  listarUsuarios,
+} from "../api/usuarioService";
 
 const Perfil = () => {
-  // Usuario guardado en localStorage (incluye id que viene del backend)
-  const usuarioLocal = JSON.parse(localStorage.getItem("usuario"));
+  // 👇 Intentamos leer primero "usuario" y, si no, "user"
+  const usuarioLocal = JSON.parse(
+    localStorage.getItem("usuario") || localStorage.getItem("user")
+  );
 
+  // Estado principal del usuario
   const [usuario, setUsuario] = useState(usuarioLocal);
   const [editMode, setEditMode] = useState(false);
   const [mensaje, setMensaje] = useState("");
@@ -19,7 +26,52 @@ const Perfil = () => {
     telefono: usuarioLocal?.telefono || "",
   });
 
-  // Si no hay usuario en localStorage, mostramos el mensaje vacío (igual que antes)
+  /**
+   * 🔄 Sincronizar con el backend al montar el componente
+   * - Si el usuario en localStorage NO tiene id,
+   *   consultamos al backend (GET /api/usuarios),
+   *   buscamos por rut o email y guardamos el usuario completo
+   *   con su id de Firestore.
+   */
+  useEffect(() => {
+    const syncUsuarioConBackend = async () => {
+      try {
+        if (!usuarioLocal) return;
+
+        // Si ya tiene id, no hacemos nada
+        if (usuarioLocal.id) return;
+
+        // Pedimos todos los usuarios al backend
+        const usuarios = await listarUsuarios();
+
+        // Buscamos el que coincida por rut o email
+        const encontrado = usuarios.find(
+          (u) =>
+            u.rut === usuarioLocal.rut || u.email === usuarioLocal.email
+        );
+
+        if (encontrado) {
+          // Actualizamos el estado y el localStorage con el usuario correcto (incluye id)
+          setUsuario(encontrado);
+          localStorage.setItem("usuario", JSON.stringify(encontrado));
+          setForm({
+            nombreCompleto: encontrado.nombreCompleto || "",
+            email: encontrado.email || "",
+            telefono: encontrado.telefono || "",
+          });
+        }
+      } catch (err) {
+        console.error("Error al sincronizar usuario con backend:", err);
+        // No mostramos error al usuario para no asustar, solo lo dejamos en consola.
+      }
+    };
+
+    if (usuarioLocal) {
+      syncUsuarioConBackend();
+    }
+  }, [usuarioLocal]);
+
+  // Si no hay usuario, mostramos el mensaje vacío
   if (!usuario) {
     return (
       <div className="perfil-page">
@@ -33,7 +85,7 @@ const Perfil = () => {
     );
   }
 
-  // Iniciales para el icono (ej: "AG")
+  // Iniciales para el icono (ej: "OC")
   const iniciales = usuario.nombreCompleto
     ? usuario.nombreCompleto
         .split(" ")
@@ -43,6 +95,7 @@ const Perfil = () => {
         .toUpperCase()
     : "U";
 
+  // Maneja cambios en los inputs del formulario
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -50,13 +103,24 @@ const Perfil = () => {
     });
   };
 
-  // Actualizar datos en backend y en localStorage
+  /**
+   * ✏️ Actualizar datos en backend y en localStorage
+   */
   const handleUpdate = async (e) => {
     e.preventDefault();
     setError("");
     setMensaje("");
 
+    // Validación extra: necesitamos el id para poder actualizar
+    if (!usuario.id) {
+      setError(
+        "No se encontró el identificador del usuario. Vuelve a iniciar sesión o regístrate nuevamente."
+      );
+      return;
+    }
+
     try {
+      // Objeto con los datos actualizados
       const actualizado = {
         ...usuario,
         nombreCompleto: form.nombreCompleto,
@@ -67,6 +131,7 @@ const Perfil = () => {
       // Llamada al backend (PUT /api/usuarios/{id})
       await actualizarUsuario(usuario.id, actualizado);
 
+      // Actualizamos el estado y el localStorage
       setUsuario(actualizado);
       localStorage.setItem("usuario", JSON.stringify(actualizado));
       setMensaje("Datos actualizados correctamente ✅");
@@ -77,7 +142,9 @@ const Perfil = () => {
     }
   };
 
-  // Eliminar cuenta en backend y limpiar localStorage
+  /**
+   * 🗑️ Eliminar cuenta en backend y limpiar localStorage
+   */
   const handleDelete = async () => {
     const confirmar = window.confirm(
       "¿Estás seguro de que quieres eliminar tu cuenta?"
@@ -87,11 +154,21 @@ const Perfil = () => {
     setError("");
     setMensaje("");
 
+    // Igual que en actualizar, necesitamos el id
+    if (!usuario.id) {
+      setError(
+        "No se encontró el identificador del usuario. Vuelve a iniciar sesión o regístrate nuevamente."
+      );
+      return;
+    }
+
     try {
       // Llamada al backend (DELETE /api/usuarios/{id})
       await eliminarUsuario(usuario.id);
 
+      // Limpiamos localStorage y estado
       localStorage.removeItem("usuario");
+      localStorage.removeItem("user"); // por si se usaba esta clave
       setUsuario(null);
       setMensaje("Cuenta eliminada correctamente ✅");
     } catch (err) {
@@ -110,7 +187,7 @@ const Perfil = () => {
           </p>
         </div>
 
-        {/* Caja de usuario (igual que antes) */}
+        {/* Caja de usuario (tarjeta a la derecha) */}
         <div className="perfil-userbox">
           <span className="perfil-userbox-label">Usuario/a</span>
           <div className="perfil-userbox-info">
@@ -118,7 +195,9 @@ const Perfil = () => {
               <span>{iniciales}</span>
             </div>
             <div className="perfil-userbox-data">
-              <span className="perfil-username">{usuario.nombreCompleto}</span>
+              <span className="perfil-username">
+                {usuario.nombreCompleto}
+              </span>
               <span className="perfil-useremail">{usuario.email}</span>
             </div>
           </div>
@@ -129,7 +208,7 @@ const Perfil = () => {
       {mensaje && <p className="perfil-success">{mensaje}</p>}
       {error && <p className="perfil-error">{error}</p>}
 
-      {/* Tarjeta de datos (mantengo tu estructura, solo agrego modo edición) */}
+      {/* Tarjeta de datos */}
       <div className="perfil-card">
         {/* Rut siempre solo lectura */}
         <div className="perfil-field">
@@ -191,7 +270,7 @@ const Perfil = () => {
           )}
         </div>
 
-        {/* Botones de acción (CRUD) */}
+        {/* Botones de acción */}
         <div className="perfil-actions">
           {!editMode ? (
             <>

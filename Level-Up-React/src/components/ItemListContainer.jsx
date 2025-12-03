@@ -6,15 +6,17 @@ import { useParams } from "react-router-dom";
 // import { db } from "../firebase/config";
 import productoService from "../api/productoService";
 
-const ItemListContainer = () => {
+// 👉 Importamos el carrusel (archivo que ya creaste)
+import MyCarousel from "./Carousel";
 
+const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
   const [titulo, setTitulo] = useState("Productos");
 
-  const categoria = useParams().categoria;
+  // Si la URL tiene /productos/:categoria capturamos ese parámetro
+  const { categoria } = useParams();
 
   useEffect(() => {
-
     const fetchProductos = async () => {
       try {
         // 1) Traemos TODOS los productos desde el backend
@@ -26,18 +28,26 @@ const ItemListContainer = () => {
           : data;
 
         setProductos(filtrados);
-        setTitulo("Productos");
+        setTitulo("Productos Destacados");
       } catch (error) {
-        console.error("Error al obtener productos desde el backend:", error);
+        console.error(
+          "Error al obtener productos desde el backend:",
+          error
+        );
       }
     };
 
     fetchProductos();
-
   }, [categoria]);
 
   return (
     <div>
+      {/* 🟣 Carrusel solo cuando NO hay categoría
+          - Es decir, en Inicio ("/") y en "/productos"
+          - Si entras a "/productos/Teclados", ya no se muestra */}
+      {!categoria && <MyCarousel />}
+
+      {/* Lista de productos como la tenías */}
       <ItemList productos={productos} titulo={titulo} />
     </div>
   );

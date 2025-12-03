@@ -1,0 +1,98 @@
+/* src/styles/Carousel.css */
+
+/* Contenedor general: centra el carrusel y separa del navbar */
+.lug-carousel-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 0;             /* se pega al navbar */
+  background: #ffffff;
+}
+
+/* Carrusel en sí */
+.lug-carousel {
+  max-width: 1200px;         /* ancho máximo para que no se vea gigante en pantallas enormes */
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Imágenes del carrusel */
+.lug-carousel-img {
+  max-height: 380px;         /* ajusta alto del banner */
+  object-fit: cover;
+}
+
+/* Texto sobre las imágenes */
+.lug-carousel-caption {
+  background: linear-gradient(
+    90deg,
+    rgba(124, 77, 255, 0.92),
+    rgba(233, 128, 252, 0.88)
+  );
+  border-radius: 999px;
+  padding: 10px 24px;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.lug-carousel-caption h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+}
+
+.lug-carousel-caption p {
+  font-size: 0.9rem;
+  margin: 4px 0 0;
+  color: #fdfbff;
+}
+
+/* Puntitos de navegación (indicators) */
+.lug-carousel .carousel-indicators [data-bs-target] {
+  background-color: #7c4dff;    /* morado Level-Up */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.lug-carousel .carousel-indicators .active {
+  background-color: #ffb6ff;    /* rosado suave */
+}
+
+/* Flechas izquierda/derecha */
+.lug-carousel .carousel-control-prev-icon,
+.lug-carousel .carousel-control-next-icon {
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.7));
+}
+
+.lug-carousel .carousel-control-prev,
+.lug-carousel .carousel-control-next {
+  width: 6%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .lug-carousel {
+    border-radius: 0;
+    max-width: 100%;
+  }
+
+  .lug-carousel-img {
+    max-height: 260px;
+  }
+
+  .lug-carousel-caption {
+    border-radius: 16px;
+    padding: 6px 14px;
+  }
+
+  .lug-carousel-caption h3 {
+    font-size: 1rem;
+  }
+
+  .lug-carousel-caption p {
+    font-size: 0.8rem;
+  }
+}
